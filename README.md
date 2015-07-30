@@ -30,7 +30,7 @@ Compilation / Installation
 ```bash
 $ sudo apt-get install libarmadillo-dev
 ```
-NOTE the `dev` suffix. It is required since the C++ headers libs need also to be installed!
+Note the `dev` suffix. It is required since the C++ headers libs need also to be installed!
 
 - Additionally, a small subset of the [C++ Boost](http://www.boost.org/) libraries is employed. On Ubuntu/Debian it may be installed with:
 ```bash
@@ -43,6 +43,8 @@ $ sudo apt-get install libboost-dev
 ```bash
 $ bin/TEBPT
 ```
+
+- **NOTE:** The software has only been tested under Linux with the GCC compiler.
 
 
 TSCBPT C++ library
@@ -67,6 +69,8 @@ $ bin/TEBPT [options] pruning_factors rows cols file1 [file2 ... fileN]
   * The files are assumed to be a sequence of (HH, HV, VH, VV) binary files. Then a number of files multiple of 4 is expected.
   * The files are converted to C3 covariance matrices and the results are stored in Prune_N folders (where N stands for the prune factor, in dB) in [PolSARPro](http://earth.eo.esa.int/polsarpro/) format. In fact they can be opened with this software for visualization and processing.
 
+- The `rows` and `cols` parameters represent the size of the input files.
+
 - The pruning factor may be a number (e.g. `-2`) or a sequence of numbers, specified as `start:inc:end` (e.g. `-3:0.5:0`). If a sequence is given, all the different prunes will be generated after BPT construction, which is much faster and efficient than with different executions of the tool.
 - The different options include:
   * `--out outpath` Changes the output directory to given one. Otherwise the results are written in the currect folder.
@@ -77,4 +81,4 @@ $ bin/TEBPT [options] pruning_factors rows cols file1 [file2 ... fileN]
   * `--blf-sigma_s, --blf-sigma_p, --blf-sigma_t, --blf-iterations value` Change the parameters of the distance based bilateral, as described in [3].
   * `--no-ts` Do not compute temporal stability measures and images.
   * `--dist-all` Generate distance images between all pairs of acquisitions.
-  * `--no-write` Do not write pruned images data
+  * `--no-write` Do not write pruned images data.
