@@ -194,9 +194,13 @@ struct MonostaticPauliScatteringVector{
 		size_t out_size = value.size() - value.size() / Channels;
 		T tmp = T(out_size);
 		for(size_t i = 0; i*Channels < value.size(); ++i){
-			tmp[i*(Channels-1)]   = (value[i*Channels] + value[i*Channels+3])/sqrt(2);
-			tmp[i*(Channels-1)+1] = (value[i*Channels] - value[i*Channels+3])/sqrt(2);
-			tmp[i*(Channels-1)+2] = (value[i*Channels+1] + value[i*Channels+2])/sqrt(2);
+			const double factor = (1.0 /sqrt(2.0));
+			tmp[i*(Channels-1)]   = (value[i*Channels] + value[i*Channels+3]);
+			tmp[i*(Channels-1)+1] = (value[i*Channels] - value[i*Channels+3]);
+			tmp[i*(Channels-1)+2] = (value[i*Channels+1] + value[i*Channels+2]);
+			tmp[i*(Channels-1)]	  *= factor;	// For std::complex this avoids
+			tmp[i*(Channels-1)+1] *= factor;	// some type problems with
+			tmp[i*(Channels-1)+2] *= factor;	// basic arithmetic operations
 		}
 		return tmp;
 	}

@@ -37,15 +37,16 @@ using namespace tscbpt;
  */
 #if defined(NO_S_VECTOR_MOD)
 	typedef tscbpt::NoOpScatteringVector				SOperator;
-	#define OUTPUT_FOLDER						"/C3"
+	#define OUTPUT_PREFIX								"C"
 #elif defined(PAULI_S_VECTOR)
 	typedef tscbpt::MonostaticPauliScatteringVector		SOperator;
-	#define	 OUTPUT_FOLDER						"/T3"
+	#define	OUTPUT_PREFIX								"T"
 #else
 	typedef tscbpt::MonostaticScatteringVector			SOperator;
-	#define OUTPUT_FOLDER						"/C3"
+	#define OUTPUT_PREFIX								"C"
 #endif
 
+#define OUTPUT_FOLDER	(to_string(OUTPUT_PREFIX)+to_string(SUBMATRIX_SIZE))
 
 /**
  *  Define the region model employed for BPT processing

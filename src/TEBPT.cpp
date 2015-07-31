@@ -377,7 +377,7 @@ int main(int argc, char** argv) {
 					assert(mkdir(dir.c_str(), S_IRWXU)==0);
 				}
 			}
-			dir += OUTPUT_FOLDER;
+			dir += to_string("/") + to_string(OUTPUT_FOLDER);
 			{ // Creating the directory path dir
 				struct stat fstat;
 				if (stat(dir.c_str(), &fstat) != 0){
@@ -395,7 +395,7 @@ int main(int argc, char** argv) {
 				// Save only polarimetric submatrices (Use with VectorMatrixModel)
 				PolSARProFormatVectorMatrixWriter<SUBMATRIX_SIZE> writer;
 
-				writer.writeDataToDir(dir, source.begin(), source.end(), string("C"));
+				writer.writeDataToDir(dir, source.begin(), source.end(), string(OUTPUT_PREFIX));
 				writer.writeConfigFile(dir, rows, cols);
 				cout << "Done. (Elapsed " << diffclock(clock(), start) << " milliseconds)" << endl;
 

@@ -1,6 +1,10 @@
 # Backup files
 *~
 
+# IDE Project files
+.project
+.externalToolBuilders
+
 # Compiled Object files
 *.slo
 *.lo
