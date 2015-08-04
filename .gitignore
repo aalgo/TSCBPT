@@ -3,6 +3,8 @@
 
 # IDE Project files
 .project
+.cproject
+.settings
 .externalToolBuilders
 
 # Compiled Object files

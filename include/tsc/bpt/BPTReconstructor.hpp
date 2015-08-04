@@ -84,8 +84,8 @@ public:
 
 	template<template <class,class> class MergeOp >
 	NodeSet& getBinaryPartitionForest(istream& mergingSeq, size_t numTrees) {
-		typedef MergeOp<NodePointer, RegionModel> 		MergeOp;
-		MergeOp	merge;
+		typedef MergeOp<NodePointer, RegionModel> 		MergeFunctor;
+		MergeFunctor	merge;
 
 		ProgressDisplay show_progress( aliveNodes.size() - numTrees );
 

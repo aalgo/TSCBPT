@@ -93,9 +93,9 @@ public:
 	NodeSet& getBinaryPartitionForest(size_t numTrees, TDissimilarityMeasure dissimilarityMeasure) {
 
 		typedef TDissimilarityMeasure					DissimilarityMeasureType;
-		typedef MergeOp<NodePointer, RegionModel> 		MergeOp;
+		typedef MergeOp<NodePointer, RegionModel> 		MergeFunctor;
 
-		MergeOp	merge;
+		MergeFunctor	merge;
 
 		SavingPolicy::prepareBPTConstruction(aliveNodes, aliveDissimilarities);
 		SavingPolicy::startBPTConstruction();
