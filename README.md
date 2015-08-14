@@ -22,20 +22,20 @@ Compilation / Installation
 
 - To get the complete software you can download the zip file from the project page or you can clone the project with `git` (requires the program to be installed):
 
-```
- git clone https://github.com/aalgo/TSCBPT.git
+```bash
+$ git clone https://github.com/aalgo/TSCBPT.git
 ```
 
 - The software requires the [Armadillo C++ library](http://arma.sourceforge.net/) for linear algebra and matrix computations. It is available in most of the Linux distributions. On Ubuntu/Debian, for instance, it may be installed with the apt package manager:
 
-```
+```bash
 $ sudo apt-get install libarmadillo-dev
 ```
 Note the `dev` suffix. It is required since the C++ headers libs need also to be installed!
 
 - Additionally, a small subset of the [C++ Boost](http://www.boost.org/) libraries is employed. On Ubuntu/Debian it may be installed with:
 
-```
+```bash
 $ sudo apt-get install libboost-dev
 ```
 
@@ -43,7 +43,7 @@ $ sudo apt-get install libboost-dev
 
 - The executable files will be placed within the `bin` folder. For instance, to execute the `TEBPT` command line program:
 
-```
+```bash
 $ bin/TEBPT
 ```
 
@@ -63,21 +63,21 @@ As an utility and as a usage example, a file called `TEBPT.cpp` is included with
 ### Usage of the TEBPT tool
 
 The `TEBPT` tool is a command line tool for processing time series datasets with the Temporal Evolution BPT, as described in [2].
-There are different compilations of the tool for processing diffeent types of data:
+There are different compilations of the tool for processing different types of data:
 - `TEBPT` processes fully polarimetric SAR data into the C3 covariance matrix.
 - `TEBPT-T3` processes fully polarimetric SAR data in the Pauli basis into the T3 covariance matrix.
 - `TEBPT-Dual` processes dual polarimetric SAR data into the C2 covariance matrix.
 - `TEBPT-Single` processes single polarimetric SAR data into the C1 covariance matrix (intensity).
 
-**NOTE:** Although all of the previous tools will generate the results in a [PolSARPro](http://earth.eo.esa.int/polsarpro/) friedly format, the `PolarType` entry in the `config.txt` file may not be correct for Dual and Single polarimetric case, since the tool does not know this information (the same case as in fully polarimetric data is writen). This needs manual edit of the `config.txt` to set the apropriate `PolarType` value.
+**NOTE:** Although all of the previous tools will generate the results in a [PolSARPro](http://earth.eo.esa.int/polsarpro/) friendly format, the `PolarType` entry in the `config.txt` file may not be correct for Dual and Single polarimetric case, since the tool does not know this information (the same case as in fully polarimetric data is written). This needs manual edit of the `config.txt` to set the appropriate `PolarType` value.
  
 The tool (any of the above variants) may be executed with the syntax:
 
-```
+```bash
 $ bin/TEBPT [options] pruning_factors rows cols file1 [file2 ... fileN]
 ```
 
-- With respect to the input files & format, it is important to nottice:
+- With respect to the input files & format, it is important to notice:
   * The input files are in binary format (complex float) with no header. Alternatively, files with a two 32bit integer header containing the rows and cols size information are allowed. In this case, specify 0 0 as rows and cols in the command line and the tool will read this data from the files.
   * NOTE: The binary endian of the input files can be switched with the `--swap-endian` option.
   * The files are assumed to be a sequence of (HH, HV, VH, VV) binary files. Then a number of files multiple of 4 is expected.
